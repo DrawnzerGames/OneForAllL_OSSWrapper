@@ -32,13 +32,15 @@ void UOnlineIdentityWrapAPI_Login::Activate()
 				{
 					if (bWasSuccessful)
 					{
-						Outer->OnLoginResponse.Broadcast(bWasSuccessful, "Login Done");
+						FString Message = "Login Complete, User id = ";
+                        Message.Append(Identity->GetUniquePlayerId(LocalUserNum).Get()->ToString());
+						Outer->OnLoginResponse.Broadcast(bWasSuccessful, Message);
 					}
 					else if (bWasSuccessful == false && Error == "Already logged in")
 					{
 						FString Message = "Already logged in, User id = ";
 						Message.Append(Identity->GetUniquePlayerId(LocalUserNum).Get()->ToString());
-						Outer->OnLoginResponse.Broadcast(bWasSuccessful, Message);
+						Outer->OnLoginResponse.Broadcast(true, Message);
 					}
 					else
 					{
