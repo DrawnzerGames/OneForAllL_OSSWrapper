@@ -7,6 +7,9 @@
 #include "OnlineFriendsWrapAPI.generated.h"
 
 
+//-----------------------------------------------------------------------------------------------------------------------------//
+//---------------------------------------------- THE GET FRIENDS LIST API------------------------------------------------------//
+
 USTRUCT(BlueprintType)
 struct FOnlineFriendWrap_OnlineFriend
 {
@@ -38,7 +41,7 @@ public:
 	UPROPERTY(BlueprintAssignable, Category="OneForAllOSSWrapper|OnlineFriendsWrap")
 	FGetFriendsListResponse FriendsListResponse;
 
-	UFUNCTION(BlueprintCallable, meta = (DisplayName="One For All GetFriendsList", BlueprintInternalUseOnly = "true"),Category="OneForAllOSSWrapper|OnlineFriendsWrap")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName="One For All Get Friends List", BlueprintInternalUseOnly = "true"),Category="OneForAllOSSWrapper|OnlineFriendsWrap")
 	static UOnlineFriendsWrapAPI_GetFriendsList* GetFriendsList(FName OSSToUse, int32 LocalUserNum);
 
 	virtual void Activate() override;
