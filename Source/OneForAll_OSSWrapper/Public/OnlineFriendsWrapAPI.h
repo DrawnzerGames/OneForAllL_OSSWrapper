@@ -50,3 +50,29 @@ private:
 	FName OSSToUse = "EOS";
 	int LocalUserNum;
 };
+
+//-----------------------------------------------------------------------------------------------------------------------------//
+//---------------------------------------------- THE GET FRIEND API------------------------------------------------------------//
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FGetFriendResponse, const FOnlineFriendWrap_OnlineFriend&, Friend);
+
+UCLASS()
+class ONEFORALL_OSSWRAPPER_API UOnlineFriendsWrapAPI_GetFriend : public UOnlineBlueprintCallProxyBase
+{
+	GENERATED_BODY()
+
+public:
+
+	UPROPERTY(BlueprintAssignable, Category="OneForAllOSSWrapper|OnlineFriendsWrap")
+	FGetFriendResponse FriendResponse;
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName="One For All Get Friend", BlueprintInternalUseOnly = "true"),Category="OneForAllOSSWrapper|OnlineFriendsWrap")
+	static UOnlineFriendsWrapAPI_GetFriend* GetFriend(FName OSSToUse, int32 LocalUserNum, FString FriendId);
+
+	virtual void Activate() override;
+
+private:
+	FName OSSToUse = "EOS";
+	int LocalUserNum;
+	FString FriendId;
+};
